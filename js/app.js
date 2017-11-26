@@ -9,9 +9,7 @@ function onDeviceReady() {
 
 function loginCheck(user, pass) {
 	// var url = 'http://' + user + ':' + pass '@127.0.0.1:8889/cittrack/api/login_test/hello';
-	$("body").pagecontainer("change", $("#dlg-invalid-credentials"), {
-		"data-rel": "popup", "data-transition": "pop", "data-position-to":"window"
-	});
+	$("#dlg-invalid-credentials").popup("open")
 }
 
 function doBind() {
