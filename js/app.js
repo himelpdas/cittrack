@@ -4,12 +4,21 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
-	loginCheck(null,null);
+	loginCheck("test","pass");
 }
 
 function loginCheck(user, pass) {
-	// var url = 'http://' + user + ':' + pass '@127.0.0.1:8889/cittrack/api/login_test/hello';
-	$("#dlg-invalid-credentials").popup("open")
+	var url = 'http://' + user + ':' + pass + '@127.0.0.1:8889/cittrack/api/login_test/hello.txt';
+	$.ajax({
+	  url,
+	  function(data) {
+		  if (data != "success") {
+			  $("#dlg-invalid-credentials").popup("open");
+			} else {
+			  alert("success!");
+			}
+	  }
+	});
 }
 
 function doBind() {
