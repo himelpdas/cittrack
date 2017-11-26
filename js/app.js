@@ -4,11 +4,11 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
-	loginCheck("test","pass");
+	loginCheck("himel@insightmanagement.org","faggot");
 }
 
 function loginCheck(user, pass) {
-	var url = 'http://' + user + ':' + pass + '@127.0.0.1:8889/init/api/login_test/hello.txt';
+	var url = 'http://' + user + ':' + pass + '@127.0.0.1:8889/init/api/login_test.txt';
 	$.ajax({
 	  url,
 	  function(data) {
