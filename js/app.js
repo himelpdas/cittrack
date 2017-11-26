@@ -14,7 +14,7 @@ function doBind() {
 }
 
 function getCameraImage() {
-	navigator.camera.getPicture(onCaptureSuccess, onCameraError, 
+	navigator.camera.getPicture(onCameraSuccess, onCameraError, 
 		{
 			quality: 100, 
 			allowEdit: false, 
