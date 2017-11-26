@@ -9,16 +9,16 @@ function onDeviceReady() {
 
 function loginCheck(user, pass) {
 	var url = 'http://' + user + ':' + pass + '@192.168.0.14:8889/init/api/login_test.txt'; 
-	$.ajax({
+	$.get(
 	  url,
 	  function(data) {
 		  if (data != "success") {
 			  $("#dlg-invalid-credentials").popup("open");
 			} else {
 			  alert("success!");
-			}
+		  }
 	  }
-	});
+	);
 }
 
 function doBind() {
