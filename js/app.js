@@ -8,7 +8,7 @@ function onDeviceReady() {
 }
 
 function loginCheck(user, pass) {
-	var url = 'http://' + user + ':' + pass '@127.0.0.1:8889/cittrack/api/login_test/hello';
+	// var url = 'http://' + user + ':' + pass '@127.0.0.1:8889/cittrack/api/login_test/hello';
 	$("body").pagecontainer("change", "#dlg-invalid-credentials");
 }
 
