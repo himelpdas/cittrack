@@ -68,7 +68,7 @@ function doList() {
 				'<h3><i class="fa fa-<%-icon[1]%> fa-fw pull-right text-<%-icon[0]%>"></i><%- v["label"] %></h3>'+  //http://bit.ly/2xe8AmO
 				  '<ul data-role="listview" data-inset="true" class="ui-nodisc-icon ui-alt-icon">'+
 					'<li><a href="#about<%- k %>"><i class="fa fa-fw fa-question-circle"></i> What Is this?</a></li>'+
-					'<li><a class="qrScanBtn"><i class="fa fa-fw fa-camera"></i> Capture</a></li>'+
+					'<li><a class="captureButton"><i class="fa fa-fw fa-camera"></i> Capture</a></li>'+
 				  '</ul>'+
 			'</div>'+
 		'<% }); %>'
