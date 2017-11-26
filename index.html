@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>San Angelico Museum of Contemporary Art</title>
+  <link rel="stylesheet" href="css/jquery.mobile.min.css">
+  <style>
+    #homeBanner {
+      width: 100%;
+    }
+    
+    .center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .banner {
+      display: block;
+      width: 100%;
+    }
+    
+    #qrcode {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    #map2 {
+      margin-left: auto;
+      margin-right: auto;
+      width: 320px;
+      height: 320px;
+    }
+  </style>
+  <link rel="stylesheet" href="css/leaflet.css" />
+  
+  <link rel="stylesheet" href="css/font_awesome/css/font-awesome.min.css">
+  
+  <script src="js/jquery.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/jquery.mobile.min.js"></script>
+  <script src="js/leaflet.js"></script>
+  <script src="js/app.js"></script>
+  <script src="cordova.js"></script>
+  <script src="phonegap.js"></script>
+  <!-- <script src="barcodescanner.js"></script> -->
+  
+  <link rel="stylesheet" href="css/text-color.css" />
+  
+  <script>
+  var stipulations = {"poi": {"description": "A lender will often require a computer generated paystub in the name of the applicant - The paystub\n\nmust be dated no later than 30 days from the signed credit application and or signed finance contract. It\n\nis important to note that any loans and or garnishments will be deducted and not considered in the\n\ngross income which is considered for financing. The Pay-Stub can be captured by the CIT Track Image\n\nCapture Feature and can be submitted to the dealership.", "label": "Proof of Income"}, "voe": {"description": "Verification of Employment is another form of verifying accuracy of the applicant's information stated\n\non the application for credit. Sometimes, lenders will accept Verification of Employment as an\n\nalternative to a pay-stub. If asked for a Verification of Employment a \"Reply\" to the dealership with the\n\nName and Phone Number of the person or department authorized to verify current state of\n\nemployment for the customers employer must be submitted. CIT - Track can submit and monitor the\n\nprogress of this stipulation being satisfied by entering applicable information into the Communication\n\nCenter feature within CIT Track.", "label": "Verification of Employment"}, "por": {"description": "Lenders always want to know where their applicants \"actually\" reside. This is often referred to as \"Proof\n\nof Roof\" please use the CIT Track Capture feature to capture an image of: Proof of Residence and submit\n\nto the dealership. The following will usually be satisfactory Proof of Residence:<ul>\n\n<li>Most recent Cellular Phone or Land Line Phone Bill - Showing the name of the applicant and\n\nthe current address matching the address stated on the application for credit. Note, the bill\n\nmust be dated no more than 30 days from the signed finance contract date.</li>\n\n<li>Most recent Utility Bill - Showing the name of the applicant and the current address matching\n\nthe address stated on the application for credit. Note, the bill should not show \"past due\"\n\nbalances and must be dated no more than 30 days from the signed finance contract date.</li>\n\n<li>In some cases a copy of the cover page of a customer's bank statement will satisfy the\n\nstipulation. Showing the name of the applicant and the current address matching the address\n\nstated on the application for credit. Note, the statement must be dated no more than 30 days\n\nfrom the signed finance contract date.</li>\n\n<li>Cable Bill - Showing the name of the applicant and the current address matching the address\n\nstated on the application for credit. Note, the bill should not show \"past due\" balances and must\n\nbe dated no more than 30 days from the signed finance contract date.</li><ul>", "label": "Proof of Residence"}, "poss": {"description": "In some cases the lender might require Proof of Social Security Card. If lost, a customer's card can be\n\nobtained from the Social Security Administration <a href='www.ssa.gov'>www.ssa.gov</a>. The Social Security Card can be captured\n\nby the CIT Track Image Capture Feature and can be submitted to the dealership.", "label": "Proof of Social Security Card"}, "poid": {"description": "In some cases the lender and or dealership might require additional information for official\n\nidentification. In cases like this; the customer will need to supply the dealership with one or more of the\n\nfollowing:<ul>\n\n<li>Valid State issued Identification Card.</li>\n\n<li>Valid US Government issued Passport.</li>\n\n<li>Valid US Government issued Government Identification Card</li></ol>", "label": "Proof of Identification"}, "pos": {"description": "In some cases a debt might be reporting as \"open\" and an applicant claims it has been satisfied. The\n\nlender might accept the explanation of the applicant yet require Proof of Satisfaction of the account. In\n\nmany cases the customer may have receipt, or confirmation, and or release of debt. Thus any applicable\n\ndocument may be accepted to satisfy the lender - this document(s) can be captured by the CIT Track\n\nImage Capture Feature and can be submitted to the dealership.", "label": "Proof of Satisfaction"}, "pob": {"description": "In many cases, the lender will require proof of a customer's checking and or savings account(s). If asked\n\nby the dealership for this information please:<ul>\n\n<li>Login to your bank account - print all pages of the most recent bank statement in your name.\n\nThe pages of this statement can be captured by the CIT Track Image Capture Feature and can be\n\nsubmitted to the dealership.</li>\n\n<li>Capture all pages of the most recent bank statement in your name which was mailed to you.\n\nThe pages of this statement can be captured by the CIT Track Image Capture Feature and can be\n\nsubmitted to the dealership.</li></ol>", "label": "Proof of Bank Account"}, "pmt": {"description": "In some cases there might be an outstanding debt by the applicant which has been paid off, but is not\n\nbeing accurately reported on the credit bureaus. In such cases the lender might require proof of the\n\npayment. If a receipt has been obtained, a confirmation, or other viable proof of satisfaction - please\n\nuse the CIT Track Capture feature to capture an image of: Proof of Payment and submit to the\n\ndealership.", "label": "Proof of Payment"}, "pomi": {"description": "Military Income is often reported differently than W2 Paystubs. Obtaining Proof of Income: There are\n\ntimes when you need to provide income information to financial institutions and other\n\nbusinesses or agencies.  If retired, your Retiree Account Statement (RAS) contains information\n\non your pay and deductions that many potential creditors require, and your latest RAS is always\n\navailable on <a href='https://mypay.dfas.mil/mypay.aspx'>myPay</a>. - If asked for Proof of Military Income - Please use the CIT Track Capture\n\nfeature to capture an image of most recent statement. If active duty military; NPA (Notice of Pay)\n\ndocument/s might be sufficient proof to satisfy the lenders stipulation/s. Again please use the CIT Track\n\nCapture feature to capture an image of: most recent earning statement (within 30 days of the signed\n\napplication for credit or signed finance contract.) and submit to the dealership. If the dealer has an\n\nissue with the document received from the customer, they will notify the customer via CIT Track as to\n\nwhat correction or additional action is required.", "label": "Proof of Military Income"}, "poc": {"description": "In most cases the Proof of Recent College Graduate will be required as part of a Factory Rebate which\n\nwas applied to the purchase price or the down payment of a customer's vehicle purchase. If asked for\n\nthis proof/document please use the CIT Track Capture feature to capture an image of:<ul>\n\n<li>College Diploma (Note: some Recent College Graduate programs differ by manufacturer and\n\nmight require different \"time frame\" criteria).</li>\n\n<li>College Transcript which shows the purchaser is graduating and or has recently graduated from\n\nan accredited university. (Any questions about this information, please contact the dealership\n\nfor additional information.)</li></ol>", "label": "Proof of Recent College Graduate"}, "pom": {"description": "In some cases applicants apply in joint. In these cases lenders might require to see the applicants are\n\nlegally married. If asked for this document please use the CIT Track Capture feature to capture an image\n\nof: A state issued valid marriage license and submit to the dealership.", "label": "Proof of Marriage"}, "pod": {"description": "In some cases certain debt/s might or might not be the responsibility of an applicant if such debt was\n\nplaced in a Divorce Decree by a court. If the lender decides to approve a loan, but as a condition of the\n\napproval; they may ask for Proof of Divorce and a Divorce Decree, thus listing the allocation of debt(s). If\n\nasked for this document, the customer may or may not be able to capture all the relevant information\n\non the CIT Track Image Capture feature due to its size. Note in this case the customer should\n\nimmediately copy and supply to the dealership their entire Divorce Decree documentation packet - to\n\navoid possible funding delays and or reversal of the conditional approval.", "label": "Proof of Divorce"}, "cli": {"description": "Just about every Secondary loan contract will require a Lender Interview prior and usually the last step\n\nbefore the lender funds the dealership for the contract. The customer in many cases will be required to\n\ncontact the lender at a pre-determined phone number and ask for a certain lender employee or\n\ndepartments. In most cases the customer will have to identify themselves either with an application\n\nnumber and or a social security number. In most cases in loans which have more than one signer (a co-\n\nsigner) the lender will only require to speak to the subject applicant. (Usually the person which whom\n\nthe vehicle is for).\n\nCommon questions to be asked by the lender during the Lender Interview:<ul>\n\n<li>Verify identity.</li>\n\n<li>Verify who the vehicle is for - and that the vehicle is for the person with whom the lender is\n\nspeaking.</li>\n\n<li>Verity the customer still has the same employment status as when they signed their application\n\nfor credit.</li>\n\n<li>Verify the customer will has the same residence status as when they signed their credit\n\napplication.</li>\n\n<li>In some cases the lender will also verify income stated on the application, rent or home\n\nmortgage payments listed on the credit application etc.</li>\n\n<li>Although it is unusual the lender may ask the customer to verify any and all information which\n\nwas stated and signed on the original application for credit.</li></ol>", "label": "Completion of Lender Interview"}};
+  var icons = [["danger", "close"], ["success", "check"], ["muted", "clock-o"]];
+  </script>
+
+</head>
+
+<body>
+
+    <div id="sign_in" data-role="page">
+	
+		<div data-role="header" id="sign-in-header" data-id="main-header" data-position="fixed" data-tap-toggle="false">
+			<h1>CIT<i class="fa fa-crosshairs"></i>TRACK</h1>
+			<!-- <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
+		</div>
+
+        <div role="main" class="ui-content">
+
+            <h3>Sign In</h3>
+
+            <label for="txt-email">Email Address</label>
+
+            <input type="text" name="txt-email" id="txt-email" value="">
+
+            <label for="txt-password">Password</label>
+
+            <input type="password" name="txt-password" id="txt-password" value="">
+
+            <fieldset data-role="controlgroup">
+
+                <input type="checkbox" name="chck-rememberme" id="chck-rememberme" checked="">
+
+                <label for="chck-rememberme">Remember me</label>
+
+            </fieldset>
+
+            <a href="#dlg-invalid-credentials" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+
+            <p class="mc-top-margin-1-5"><a href="#homeScreen">Can't access your account?</a></p>
+
+            <div data-role="popup" id="dlg-invalid-credentials" data-dismissible="false" style="max-width:400px;">
+
+                <div role="main" class="ui-content">
+
+                    <h3 class="mc-text-danger">Login Failed</h3>
+
+                    <p>Did you enter the right credentials?</p>
+
+                    <div class="mc-text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">OK</a></div>
+
+                </div>
+
+            </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+	
+
+  <div id="homeScreen" data-role="page">
+	
+	<div data-role="header" id="home-screen-header" data-id="main-header" data-position="fixed" data-tap-toggle="false">
+		<h1>CIT<i class="fa fa-crosshairs"></i>TRACK</h1>
+		<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a>
+	</div>	
+
+    <img src="imgs/SAMOCA_banner_1.png" class="banner" />
+    <div data-role="content">
+		<div id="target" data-role="collapsible-set">
+			<!---->
+		</div>
+		<!--div class="ui-grid-a center">
+			<div class="ui-block-a">
+				<a href="#aboutScreen" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Info</a>
+			</div>
+			<div class="ui-block-b">
+				<a href="#mapScreen" class="ui-btn ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Map</a>
+			</div>
+		</div-->
+    </div>
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="index.html" data-role="button" data-icon="edit" data-mini="true">Send A Message</a></li>
+				<li><a href="index.html" data-role="button" data-icon="mail" data-mini="true">Messages Waiting(4)</a></li>
+				<li><a href="index.html" data-role="button" data-icon="phone" data-mini="true">Call Your Dealer</a></li>
+			</ul>
+		</div><!-- /grid-b -->
+	</div>
+  </div>
+  
+  
+<script>
+
+</script>
+  
+  <div id="currentExhibits" data-role="page">
+    <header data-role="header" data-position="fixed" data-id="appHeader">
+      <h1>SAMOCA</h1>
+      <a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+    </header>
+    <div data-role="content">
+      <h1 class="center">Current Exhibits</h1>
+      <ul data-role="listview" data-inset="false" class="ui-nodisc-icon ui-alt-icon">
+        <li>
+          <a href="#"><img src="imgs/Westhoff_thumb.png">
+            <h2>Siobhan Westhoff</h2>
+            <p>Final Weeks</p>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="imgs/101733188_thumb.png">
+            <h2>RED</h2>
+            <p>Eleanor Friosh</p>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="imgs/106588354_thumb.png">
+            <h2>Imbalanced</h2>
+            <p>Simone Best, Sheldon Crane, and Elizabeth Moore</p>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="imgs/924520721_thumb.png">
+            <h2>Morten Rand-Hendriksen</h2>
+            <p>The Untitled Collection</p>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="imgs/Vision_thumb.png">
+            <h2>VISION</h2>
+            <p>New Works from the SAMOCA Permanent Collection</p>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="imgs/Watching_thumb.png">
+            <h2>Paul Shellmont: Bird Watching</h2>
+            <p>Upcoming Exhibition</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="pastExhibits" data-role="page">
+    <header data-role="header" data-position="fixed" data-id="appHeader">
+      <h1>SAMOCA</h1>
+      <a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+    </header>
+    <div data-role="content">
+      <h1 class="center">Past Exhibits</h1>
+      <ul data-role="listview" data-inset="false" class="ui-nodisc-icon ui-alt-icon">
+        <li>
+          <a href="#"><img src="imgs/GroundSwell_thumb.png">
+            <h2>Groundswell: Design Series II</h2>
+            <p> </p>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="imgs/Buildings_thumb.png">
+            <h2>Reflections on Architecture: Imagining Buildings</h2>
+            <p> </p>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div id="mapScreen" data-role="page">
+    <header data-role="header" data-position="fixed" data-id="appHeader">
+      <h1>SAMOCA</h1>
+      <a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+    </header>
+    <div data-role="content">
+      <h2 class="center">San Angelico Museum of Contemporary Art</h2>
+      <p class="center">123 Main Street Ventura, CA 12345
+        <br>(800)555-1212</p>
+      <div id="map2"><img src="imgs/map.png" /></div>
+    </div>
+  </div>
+
+  <div id="discoverScreen" data-role="page">
+    <header data-role="header" data-position="fixed" data-id="appHeader">
+      <h1>SAMOCA</h1>
+      <a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+    </header>
+    <div data-role="content">
+      <img id="qrcode" src="imgs/qr.png" />
+      <h3 class="center">Discover More Exciting Stories</h3>
+      <p class="center">Any time you see this QR code, scan it using the Discover button to see additional content from SAMOCA.</p>
+      <a id="qrScanBtn" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-search">Discover</a>
+    </div>
+  </div>
+
+  <div id="aboutScreen" data-role="page">
+    <header data-role="header" data-position="fixed" data-id="appHeader">
+      <h1>SAMOCA</h1>
+      <a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+    </header>
+    <div data-role="content">
+      <h2 class="center">San Angelico Museum of Contemporary Art</h2>
+      <h3 class="center">Celebrating the Best of Modern Art</h3>
+      <img class="center banner" src="imgs/Museum.png" />
+      <p>SAMOCA (San Angelico Museum of Contemporary Art) is an art museum with a focus on modern art from the last 75 years. Since its inception in 1973, the museum has been the leader of modern contemporary design. SAMOCA is located in the heart of Ventura, ninety miles north of Los Angeles in Southern California.</p>
+
+      <p>SAMOCA was established to promote the celebration of modern art in many forms including visual and performing arts, music, and crafts – with collections that are suitable for the entire family. The museum focuses on the unique talents and accomplishments of up-and-coming artists found within the forward-thinking California community and beyond.</p>
+
+      <p>Our collections are designed to highlight the importance of contemporary art within modern society. Important influences, such as pop, cinema, and current events, permeate our halls. Through our diverse collections, events, and with the support of our patrons and volunteers, the museum helps to promote the importance of modern art around the world.</p>
+      <p class="center">123 Main Street Ventura, CA 12345 (800) 555-1212</p>
+    </div>
+  </div>
+  <!--
+	Admission
+	Directions
+	Parking
+	Hours
+	Volunteer
+	-->
+</body>
+
+</html>
