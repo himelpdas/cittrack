@@ -4,6 +4,7 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
+	loginCheck(null,null);
 }
 
 function loginCheck(user, pass) {
