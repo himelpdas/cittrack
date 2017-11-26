@@ -8,7 +8,7 @@ function onDeviceReady() {
 }
 
 function loginCheck(user, pass) {
-	var url = 'http://' + user + ':' + pass + '@0.0.0.0:8889/init/api/login_test.txt';
+	var url = 'http://' + user + ':' + pass + '@192.168.56.1:8889/init/api/login_test.txt';
 	$.ajax({
 	  url,
 	  function(data) {
