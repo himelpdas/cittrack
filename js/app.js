@@ -4,10 +4,10 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
-	loginCheck("himel@insightmanagement.org","faggot");
 }
 
 function loginCheck(user, pass) {
+	
 	var url = 'http://' + user + ':' + pass + '@192.168.0.14:8889/init/api/login_test.txt'; 
 	$.get(
 	  url,
@@ -21,11 +21,34 @@ function loginCheck(user, pass) {
 	);
 }
 
+function getKey() {
+	var key = window.localStorage.getItem("key");
+	if (key == null) {
+		doQrScan();
+	}
+	testKey(key);
+}
+
+function testKey(key) {
+	var url = 'http://192.168.0.14:8889/init/api/key_test.txt';
+	$.get(
+	  url,
+	  function(data) {
+		  if (data != "success") {
+			  alert("Invalid Key! Please contact your dealer for a new barcode!");
+			} else {
+			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
+		  }
+	  }
+	);
+}
+
 function doBind() {
 	$( ".captureButton" ).click(function() {
   		//doScan();
   		getCameraImage();
 	});
+	
 }
 
 function getCameraImage() {
@@ -47,17 +70,22 @@ function onCameraSuccess(imageData) {
 	alert(imageData);
 }
 
-function doScan(){
+function doQrScan(){
 	cordova.plugins.barcodeScanner.scan(
 		function (result) {
-			alert("We got a barcode\n" +
-				"Result: " + result.text + "\n" +
-				"Format: " + result.format + "\n" +
-				"Cancelled: " + result.cancelled);
-	  	}, 
+			window.localStorage.setItem("key", result.text);
+			getKey();
+			// alert("We got a barcode\n" +
+				// "Result: " + result.text + "\n" +
+				// "Format: " + result.format + "\n" +
+				// "Cancelled: " + result.cancelled);
+	  	},
 	  	function (error) {
 			alert("Scanning failed: " + error);
-	  	}
+	  	},
+		{
+			'prompt' : "Scan the CITTrack Barcode now.",
+		}
 	);	
 }
 
