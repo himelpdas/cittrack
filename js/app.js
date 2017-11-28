@@ -44,7 +44,7 @@ function testKey(key) {
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error: " + textStatus );
+		alert( "Error: Failed to connect to CITTrack server! Try again." );
 		window.localStorage.removeItem("key");
 		getKey();
 	});
@@ -89,7 +89,6 @@ function doQrScan(){
 	  	},
 	  	function (error) {
 			alert("Scanning failed: " + error);
-			window.localStorage.removeItem("key");
 	  	},
 		{
 			'prompt' : "Scan the CITTrack Barcode now.",
