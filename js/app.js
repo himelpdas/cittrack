@@ -71,16 +71,17 @@ function onCameraError(message) {
 	alert('Error: ' + message);
 }
 
-function onCameraSuccess(imageData) {
+function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 	var stipulation = window.sessionStorage.getItem("temp");
 	var key = window.localStorage.getItem("key");
 	var url = 'http://192.168.0.11:8889/init/api/post_image.txt/' + key + "/" + stipulation;
-	var send = {"image" : imageData};
+	var send = new FormData();
+	send.append('image', imageData);
 	$.ajax({
 		url: url,
 		data: send,
 		cache: false,
-		contentType: 'multipart/form-data',
+		contentType: false,
 		processData: false,
 		type: 'POST',
 		success: function(data){
