@@ -4,7 +4,6 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
-	getKey()
 }
 
 function loginCheck(user, pass) {
@@ -38,7 +37,6 @@ function testKey(key) {
 		  if (data != "success") {
 			  alert("Error: Invalid Key! Please contact your dealer for a new barcode!");
 			  window.localStorage.removeItem("key");
-			  getKey();
 			} else {
 			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
 		  }
@@ -46,7 +44,6 @@ function testKey(key) {
 	).fail(function( jqXHR, textStatus, errorThrown) {
 		alert( "Error: Failed to connect to CITTrack server! Try again." );
 		window.localStorage.removeItem("key");
-		getKey();
 	});
 }
 
@@ -54,6 +51,9 @@ function doBind() {
 	$( ".captureButton" ).click(function() {
   		//doScan();
   		getCameraImage();
+	});
+	$( "#qr_scan" ).click(function() {
+		getKey();
 	});
 	
 }
