@@ -109,7 +109,7 @@ function getStipulations(){
 		doList(data);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error: Failed to connect to CITTrack server! Try scanning again." );
+		alert( "Error: Failed to connect to CITTrack server!" );
 	});
 }
 
