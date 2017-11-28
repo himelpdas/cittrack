@@ -78,6 +78,8 @@ function onCameraSuccess(imageData) {
 	var send = {"image" : imageData};
 	$.post( url, send, function( data ) {
 		alert("Posted image ID " + data);
+	}).fail(function( jqXHR, textStatus, errorThrown) {
+		alert( "Error: Failed to submit image to CITTrack!" );
 	});
 }
 
