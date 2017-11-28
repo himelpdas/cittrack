@@ -30,7 +30,7 @@ function getKey() {
 }
 
 function testKey(key) {
-	var url = 'http://192.168.0.11:8889/init/api/key_test.txt/ + key';
+	var url = 'http://192.168.0.11:8889/init/api/key_test.txt/' + key;
 	$.get(
 	  url,
 	  function(data) {
