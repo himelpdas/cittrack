@@ -4,7 +4,6 @@ function onDeviceReady() {
 	doAbout();
 	doBind();
 	testKey(window.localStorage.getItem("key"));
-	getStipulations();
 }
 
 function loginCheck(user, pass) {
@@ -39,6 +38,7 @@ function testKey(key) {
 			  alert("Error: Invalid Key! Please contact your dealer for a new barcode!");
 			  window.localStorage.removeItem("key");
 			} else {
+			  getStipulations();
 			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
 		  }
 	  }
