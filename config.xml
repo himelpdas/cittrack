@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.cittrack.app"
     versionCode = "1" 
-    version     = "1.0.0" >
+    version     = "1.0.1" >
    <name>CitTrack</name>
     <description>
             An app to track stipulations for car sales. 
