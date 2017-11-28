@@ -1,10 +1,10 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	doList();
 	doAbout();
 	doBind();
-	testKey(key = window.localStorage.getItem("key"));
+	testKey(window.localStorage.getItem("key"));
+	getStipulations();
 }
 
 function loginCheck(user, pass) {
@@ -97,15 +97,23 @@ function doQrScan(){
 	);	
 }
 
-function refreshPage(){
+function refreshHome(){
 	getStipulations();	
 }
 
-//function getStipulations(){
-	
-//}
+function getStipulations(){
+	var url = 'http://192.168.0.11:8889/init/api/get_stipulations.json/' + window.localStorage.getItem("key");
+	$.get(
+	  url,
+	  function(data) {
+		doList(data);
+	  }
+	).fail(function( jqXHR, textStatus, errorThrown) {
+		alert( "Error: Failed to connect to CITTrack server! Try scanning again." );
+	});
+}
 
-function doList() {
+function doList(data) {
 	var tpl = _.template(
 		"<% _.each( stipulations, function(v, k) { %>"+
 			'<% var icon = _.sample(icons);  %>'+
@@ -118,7 +126,7 @@ function doList() {
 			'</div>'+
 		'<% }); %>'
 	);
-	$("#target").append(tpl({stipulations: stipulations, icons: icons}));
+	$("#target").append(tpl({stipulations: data, icons: icons}));
 }	
 
 function doAbout() {
