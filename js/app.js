@@ -60,7 +60,7 @@ function getCameraImage(stipulation) {
 	navigator.camera.getPicture(onCameraSuccess, onCameraError, 
 		{
 			quality: 75, 
-			allowEdit: true, 
+			allowEdit: false, 
 			destinationType: navigator.camera.DestinationType.DATA_URL,
 			encodingType: navigator.camera.EncodingType.JPEG // or PNG
 		}
