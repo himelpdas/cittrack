@@ -41,7 +41,9 @@ function testKey(key) {
 			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
 		  }
 	  }
-	);
+	).fail(function( jqXHR, textStatus, errorThrown) {
+		alert( "error " + errorThrown );
+	});
 }
 
 function doBind() {
