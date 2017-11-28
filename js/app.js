@@ -76,10 +76,19 @@ function onCameraSuccess(imageData) {
 	var key = window.localStorage.getItem("key");
 	var url = 'http://192.168.0.11:8889/init/api/post_image.txt/' + key + "/" + stipulation;
 	var send = {"image" : imageData};
-	$.post( url, send, function( data ) {
-		alert("Posted image ID " + data);
-	}).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error: Failed to submit image to CITTrack!" );
+	$.ajax({
+		url: url,
+		data: data,
+		cache: false,
+		contentType: 'multipart/form-data',
+		processData: false,
+		type: 'POST',
+		success: function(data){
+			alert("Posted image ID " + data);
+		},
+		fail: function( jqXHR, textStatus, errorThrown) {
+			alert( "Error: Failed to submit image to CITTrack!" );
+		}
 	});
 }
 
