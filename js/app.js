@@ -72,7 +72,13 @@ function onCameraError(message) {
 }
 
 function onCameraSuccess(imageData) {
-	stipulation = window.sessionStorage.getItem("temp");
+	var stipulation = window.sessionStorage.getItem("temp");
+	var key = window.localStorage.getItem("key");
+	var url = 'http://192.168.0.11:8889/init/api/post_image.txt/' + key + "/" + stipulation;
+	send = {"image" : imageData};
+	$.post( url, send, function( data ) {
+		alert("Posted image ID " + data);
+	});
 	alert(stipulation);
 }
 
