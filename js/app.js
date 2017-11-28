@@ -59,10 +59,10 @@ function getCameraImage(stipulation) {
 	window.sessionStorage.setItem("temp", stipulation);
 	navigator.camera.getPicture(onCameraSuccess, onCameraError, 
 		{
-			quality: 100, 
-			allowEdit: false, 
+			quality: 75, 
+			allowEdit: true, 
 			destinationType: navigator.camera.DestinationType.DATA_URL,
-			encodingType: navigator.camera.EncodingType.PNG
+			encodingType: navigator.camera.EncodingType.JPEG // or PNG
 		}
 	);
 }
