@@ -4,6 +4,7 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
+	getKey()
 }
 
 function loginCheck(user, pass) {
