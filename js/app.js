@@ -39,7 +39,7 @@ function testKey(key) {
 			  window.localStorage.removeItem("key");
 			} else {
 			  getStipulations();
-			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
+			  $( "body" ).pagecontainer( "change", $("#homeScreen") , {reverse: false, changeHash: false});  //https://stackoverflow.com/questions/13252524/remove-page-from-jquery-mobile-history-such-that-back-button-bypasses-it
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
@@ -105,6 +105,7 @@ function doQrScan(){
 	  	},
 	  	function (error) {
 			alert("Scanning failed: " + error);
+			window.localStorage.removeItem("key");
 	  	},
 		{
 			'prompt' : "Scan the CITTrack Barcode now.",
