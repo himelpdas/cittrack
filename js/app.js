@@ -30,7 +30,7 @@ function getKey() {
 }
 
 function testKey(key) {
-	var url = 'http://192.168.0.11:8889/init/api/key_test.txt';
+	var url = 'http://192.168.0.11:8889/init/api/key_test.txt/ + key';
 	$.get(
 	  url,
 	  function(data) {
@@ -43,7 +43,7 @@ function testKey(key) {
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error: Failed to connect to CITTrack server!" );
+		alert( "Error 3: Failed to connect to CITTrack server!" );
 	});
 }
 
@@ -104,7 +104,6 @@ function doQrScan(){
 	  	},
 	  	function (error) {
 			alert("Scanning failed: " + error);
-			window.localStorage.removeItem("key");
 	  	},
 		{
 			'prompt' : "Scan the CITTrack Barcode now.",
