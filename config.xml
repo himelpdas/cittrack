@@ -91,7 +91,9 @@
       <plugin name="cordova-plugin-splashscreen" spec="~3.2.1" source="npm"/>
       <plugin name="cordova-plugin-statusbar" spec="~2.1.2" source="npm"/>
       <plugin name="cordova-plugin-whitelist" spec="~1.2.1" source="npm"/>
-      <plugin name="cordova-plugin-barcodescanner" source="npm"/>
+		<plugin name="phonegap-plugin-barcodescanner">
+		  <param name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes." />
+		</plugin>
       
       <access origin="*" subdomains="true"/>
       
