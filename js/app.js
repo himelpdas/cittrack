@@ -55,7 +55,8 @@ function doBind() {
 	
 }
 
-function getCameraImage() {
+function getCameraImage(stipulation) {
+	window.sessionStorage.setItem("temp", stipulation);
 	navigator.camera.getPicture(onCameraSuccess, onCameraError, 
 		{
 			quality: 100, 
@@ -71,7 +72,8 @@ function onCameraError(message) {
 }
 
 function onCameraSuccess(imageData) {
-	alert(imageData);
+	stipulation = window.sessionStorage.getItem("temp");
+	alert(stipulation);
 }
 
 function doQrScan(){
@@ -117,7 +119,7 @@ function doList(data) {
 				'<h3><i class="fa fa-<%-icon[1]%> fa-fw pull-right text-<%-icon[0]%>"></i><%- v["label"] %></h3>'+  //http://bit.ly/2xe8AmO
 				  '<ul data-role="listview" data-inset="true" class="ui-nodisc-icon ui-alt-icon">'+
 					'<li><a href="#about<%- k %>"><i class="fa fa-fw fa-question-circle"></i> What Is this?</a></li>'+
-					'<li><a class="captureButton"><i class="fa fa-fw fa-camera"></i> Capture</a></li>'+
+					'<li><a class="captureButton" data-stipulation="<%- k %>"><i class="fa fa-fw fa-camera"></i> Capture</a></li>'+
 				  '</ul>'+
 			'</div>'+
 		'<% }); %>'
@@ -125,7 +127,7 @@ function doList(data) {
 	$("#target").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
 	$( ".captureButton" ).click(function() {
   		//doScan();
-  		getCameraImage();
+  		getCameraImage($(this).data("stipulation"));
 	});
 }	
 
