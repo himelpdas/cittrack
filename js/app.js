@@ -43,8 +43,7 @@ function testKey(key) {
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error: Failed to connect to CITTrack server! Try scanning again." );
-		window.localStorage.removeItem("key");
+		alert( "Error: Failed to connect to CITTrack server!" );
 	});
 }
 
@@ -88,7 +87,7 @@ function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 			alert("Posted image ID " + data);
 		},
 		fail: function( jqXHR, textStatus, errorThrown) {
-			alert( "Error: Failed to submit image to CITTrack!" );
+			alert( "Error 1: Failed to submit image to CITTrack!" );
 		}
 	});
 }
@@ -125,7 +124,7 @@ function getStipulations(){
 		doList(data);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error: Failed to connect to CITTrack server!" );
+		alert( "Error 2: Failed to connect to CITTrack server!" );
 	});
 }
 
