@@ -99,7 +99,7 @@ function refreshHome(){
 
 function getStipulations(){
 	var url = 'http://192.168.0.11:8889/init/api/get_stipulations.json/' + window.localStorage.getItem("key");
-	$.getJSON(  //getJSON otherwise JQM styling fails to apply
+	$.getJSON(  
 	  url,
 	  function(data) {
 		doList(data);
@@ -122,7 +122,7 @@ function doList(data) {
 			'</div>'+
 		'<% }); %>'
 	);
-	$("#target").append(tpl({stipulations: data, icons: icons}));
+	$("#target").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
 	$( ".captureButton" ).click(function() {
   		//doScan();
   		getCameraImage();
