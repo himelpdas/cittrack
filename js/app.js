@@ -78,7 +78,7 @@ function onCameraSuccess(imageData) {
 	var send = {"image" : imageData};
 	$.ajax({
 		url: url,
-		data: data,
+		data: send,
 		cache: false,
 		contentType: 'multipart/form-data',
 		processData: false,
