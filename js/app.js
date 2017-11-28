@@ -49,10 +49,6 @@ function testKey(key) {
 }
 
 function doBind() {
-	$( ".captureButton" ).click(function() {
-  		//doScan();
-  		getCameraImage();
-	});
 	$( "#qr_scan" ).click(function() {
 		getKey();
 	});
@@ -127,6 +123,10 @@ function doList(data) {
 		'<% }); %>'
 	);
 	$("#target").append(tpl({stipulations: data, icons: icons}));
+	$( ".captureButton" ).click(function() {
+  		//doScan();
+  		getCameraImage();
+	});
 }	
 
 function doAbout() {
