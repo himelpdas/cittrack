@@ -37,6 +37,7 @@ function testKey(key) {
 	  function(data) {
 		  if (data != "success") {
 			  alert("Error: Invalid Key! Please contact your dealer for a new barcode!");
+			  window.localStorage.removeItem("key");
 			  getKey();
 			} else {
 			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
@@ -44,6 +45,7 @@ function testKey(key) {
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
 		alert( "Error: " + textStatus );
+		window.localStorage.removeItem("key");
 		getKey();
 	});
 }
@@ -87,6 +89,7 @@ function doQrScan(){
 	  	},
 	  	function (error) {
 			alert("Scanning failed: " + error);
+			window.localStorage.removeItem("key");
 	  	},
 		{
 			'prompt' : "Scan the CITTrack Barcode now.",
