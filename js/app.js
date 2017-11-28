@@ -36,13 +36,15 @@ function testKey(key) {
 	  url,
 	  function(data) {
 		  if (data != "success") {
-			  alert("Invalid Key! Please contact your dealer for a new barcode!");
+			  alert("Error: Invalid Key! Please contact your dealer for a new barcode!");
+			  getKey();
 			} else {
 			  $( "body" ).pagecontainer( "change", $("#homeScreen") );
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "error " + errorThrown );
+		alert( "Error: " + textStatus );
+		getKey();
 	});
 }
 
