@@ -99,7 +99,7 @@ function refreshHome(){
 
 function getStipulations(){
 	var url = 'http://192.168.0.11:8889/init/api/get_stipulations.json/' + window.localStorage.getItem("key");
-	$.getJSON(
+	$.getJSON(  //getJSON otherwise JQM styling fails to apply
 	  url,
 	  function(data) {
 		doList(data);
