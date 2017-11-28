@@ -4,6 +4,7 @@ function onDeviceReady() {
 	doList();
 	doAbout();
 	doBind();
+	testKey(key = window.localStorage.getItem("key"));
 }
 
 function loginCheck(user, pass) {
