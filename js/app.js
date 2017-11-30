@@ -126,7 +126,7 @@ function getMessages(){
 		doMessages(data);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		alert( "Error : Failed to connect to CITTrack server!" );
+		alert( "Error 4: Failed to connect to CITTrack server!" );
 	});
 }
 
@@ -186,7 +186,7 @@ function doMessages(data) {
 				'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%- v["date"] %>'+
 				'</li>'+
 				'<li>'+
-					'<h2><%- v["name"] %></h2>'+
+					'<h2><%- v["person"] %></h2>'+
 					'<p><%- v["message"] %></p>'+
 				'</li>'+
 			'</ul>'+
