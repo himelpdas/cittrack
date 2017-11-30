@@ -23,7 +23,7 @@ function loginCheck(user, pass) {
 
 function getKey() {
 	var key = window.localStorage.getItem("key");
-	if !(key) {
+	if (!key) {
 		doQrScan();
 	} else {
 		testKey(key);
