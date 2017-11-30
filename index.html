@@ -67,9 +67,12 @@
 
         <div role="main" class="ui-content">
 
-            <h3>Scan CITTrack Barcode to Begin</h3>
-
-            <a id="qr_scan" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Scan <i class="fa fa-fw fa-barcode"></i></a>
+            <h3 id="loading_header"><i class="fa fa-cog fa-fw fa-spin">Looking for your CITTrack key... </i></h3>
+			<div class="scan_barcode_header" style="display: none;">
+			<h3>
+				<i class="fa fa-cog fa-fw fa-spin">Please scan the CITTrack barcode at your dealership: </i></h3>
+				<a id="qr_scan" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5" style="display: none;">Scan <i class="fa fa-fw fa-barcode"></i></a>
+			</h3>
 
 
         </div><!-- /content -->

@@ -35,9 +35,13 @@ function testKey(key) {
 	  url,
 	  function(data) {
 		  if (data != "success") {
+			  $('#loading_header').hide();
+			  $('#scan_barcode_header').show();
 			  alert("Error: Invalid Key! Please contact your dealer for a new barcode!");
 			  window.localStorage.removeItem("key");
 			} else {
+			  $('#loading_header').show();
+			  $('#scan_barcode_header').hide();
 			  getStipulations();
 			  $( "body" ).pagecontainer( "change", $("#homeScreen") , {reverse: false, changeHash: false});  //https://stackoverflow.com/questions/13252524/remove-page-from-jquery-mobile-history-such-that-back-button-bypasses-it
 		  }
