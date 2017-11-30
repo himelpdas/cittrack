@@ -55,8 +55,10 @@ function testKey(key) {
 function doBind() {
 	$( "#qr_scan" ).click(function() {
 		doQrScan();
+	});	
+	$( "#get_messages" ).click(function() {
+		getMessages();
 	});
-	
 }
 
 function getCameraImage(stipulation) {
@@ -116,8 +118,16 @@ function doQrScan(){
 	);	
 }
 
-function refreshHome(){
-	getStipulations();	
+function getMessages(){
+	var url = 'http://192.168.0.11:8889/init/api/get_messages.json/' + window.localStorage.getItem("key");
+	$.getJSON(  
+	  url,
+	  function(data) {
+		doMessages(data);
+	  }
+	).fail(function( jqXHR, textStatus, errorThrown) {
+		alert( "Error : Failed to connect to CITTrack server!" );
+	});
 }
 
 function getStipulations(){
@@ -145,7 +155,7 @@ function doList(data) {
 			'</div>'+
 		'<% }); %>'
 	);
-	$("#target").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
+	$("#stipulations").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
 	$( ".captureButton" ).click(function() {
   		//doScan();
   		getCameraImage($(this).data("stipulation"));
@@ -168,3 +178,19 @@ function doAbout() {
 	);
 	$("body").append(tpl2({stipulations: stipulations}));
 }
+
+function doMessages(data) {
+	var tpl = _.template(
+		"<% _.each( data, function(v, k) { %>"+
+			'<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">'+
+				'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%- v["date"] %>'+
+				'</li>'+
+				'<li>'+
+					'<h2><%- v["name"] %></h2>'+
+					'<p><%- v["message"] %></p>'+
+				'</li>'+
+			'</ul>'+
+		'<% }); %>'
+	);
+	$("#messages").html(tpl({data: data})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply 
+}	
