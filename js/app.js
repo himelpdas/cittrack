@@ -23,15 +23,14 @@ function loginCheck(user, pass) {
 
 function getKey() {
 	var key = window.localStorage.getItem("key");
-	if (key == null) {
+	if ~(key) {
 		doQrScan();
 	} else {
-		testKey();
+		testKey(key);
 	}	
 }
 
-function testKey() {
-	var key = window.localStorage.getItem("key");
+function testKey(key) {
 	var url = 'http://192.168.0.11:8889/init/api/key_test.txt/' + key;
 	$.get(
 	  url,
@@ -102,7 +101,7 @@ function doQrScan(){
 	cordova.plugins.barcodeScanner.scan(
 		function (result) {
 			window.localStorage.setItem("key", result.text);
-			testKey();
+			testKey(result.text);
 			// alert("We got a barcode\n" +
 				// "Result: " + result.text + "\n" +
 				// "Format: " + result.format + "\n" +
