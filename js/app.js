@@ -53,7 +53,7 @@ function testKey(key) {
 
 function doBind() {
 	$( "#qr_scan" ).click(function() {
-		getKey();
+		doQrScan();
 	});
 	
 }
@@ -100,7 +100,7 @@ function doQrScan(){
 	cordova.plugins.barcodeScanner.scan(
 		function (result) {
 			window.localStorage.setItem("key", result.text);
-			getKey();
+			testKey();
 			// alert("We got a barcode\n" +
 				// "Result: " + result.text + "\n" +
 				// "Format: " + result.format + "\n" +
