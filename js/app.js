@@ -25,7 +25,9 @@ function getKey() {
 	var key = window.localStorage.getItem("key");
 	if (key == null) {
 		doQrScan();
-	}
+	} else {
+		testKey();
+	}	
 }
 
 function testKey() {
