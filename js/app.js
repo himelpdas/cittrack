@@ -26,10 +26,10 @@ function getKey() {
 	if (key == null) {
 		doQrScan();
 	}
-	testKey(key);
 }
 
-function testKey(key) {
+function testKey() {
+	var key = window.localStorage.getItem("key");
 	var url = 'http://192.168.0.11:8889/init/api/key_test.txt/' + key;
 	$.get(
 	  url,
