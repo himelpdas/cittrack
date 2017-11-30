@@ -3,7 +3,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	doAbout();
 	doBind();
-	testKey(window.localStorage.getItem("key"));
+	getKey();
 }
 
 function loginCheck(user, pass) {
