@@ -193,4 +193,4 @@ function doMessages(data) {
 		'<% }); %>'
 	);
 	$("#messages").html(tpl({data: data})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply 
-}	
+}
