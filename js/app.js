@@ -4,8 +4,9 @@ var url_base = "https://himeldas.pythonanywhere.com"
 
 function onDeviceReady() {
 	$('.main-header').load('header.html');
-	$('.main-footer').load('footer.html');
-	doBind();
+	$('.main-footer').load('footer.html', function(){
+		doBind();
+	});
 	doAbout();
 	getKey();
 }
