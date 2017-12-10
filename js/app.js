@@ -3,13 +3,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 var url_base = "https://himeldas.pythonanywhere.com"
 
 function onDeviceReady() {
-	$('.main-header').load('header.html', function() {
-		$('.main-footer').load('footer.html', function() {
-			doBind();
-			doAbout();
-			getKey();
-		});
-	});
+	$('.main-header').load('header.html');
+	$('.main-footer').load('footer.html');
+	doBind();
+	doAbout();
+	getKey();
 }
 
 function loginCheck(user, pass) {
