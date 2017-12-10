@@ -105,7 +105,8 @@ function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 		processData: false,
 		type: 'POST',
 		success: function(data){
-			toast("Image upload success!");
+			toast("Image upload success! Your dealer will review it shortly.");
+			getStipulations();
 		},
 		fail: function( jqXHR, textStatus, errorThrown) {
 			toast( "Error 4: Failed to submit image to CITTrack!" );
