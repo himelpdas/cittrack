@@ -162,7 +162,7 @@ function getInformation(){
 		doInfo(data);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		toast( "Error 7: Failed to connect to CITTrack server!" );
+		toast( "Error 8: Failed to connect to CITTrack server!" );
 	});
 }
 
@@ -221,13 +221,13 @@ function doMessages(data) {
 
 function doInfo(data) {
 	var tpl = _.template(
-		'<p>Contract ID: <%= info["contract_id"]%></p>'+
-		'<p>Vehicle: <%= info["vehicle"]%></p>'+
-		'<p>Dealership: <%= info["dealership"]%></p>'+
-		'<p>Dealership address: <%= info["dealership_add"]%></p>'+
-		'<p>Dealership Tel: <%= info["dealership_tel"]%></p>'+
-		'<p>Dealer: <%= info["dealer"]%></p>'+
-		'<p>Dealer Tel: <%= info["dealer_tel"]%></p>'
+		'<h3>Contract ID: </h3><p><%= info["contract_id"]%></p>'+
+		'<h3>Vehicle: </h3><p><%= info["vehicle"]%></p>'+
+		'<h3>Dealership: </h3><p><%= info["dealership"]%></p>'+
+		'<h3>Dealership address: </h3><p><%= info["dealership_add"]%></p>'+
+		'<h3>Dealership Tel: </h3><p><%= info["dealership_tel"]%></p>'+
+		'<h3>Dealer: </h3><p><%= info["dealer"]%></p>'+
+		'<h3>Dealer Tel: </h3><p><%= info["dealer_tel"]%></p>'
 	);
 	$("#information").html(tpl({info: data})).enhanceWithin();
 }
