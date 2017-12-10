@@ -10,6 +10,9 @@ function onDeviceReady() {
 		});
 		$( "#get_info" ).click(function() {
 			getInformation();
+		});		
+		$( "#get_stipulations" ).click(function() {
+			getStipulations();
 		});
 	});
 	doBind();
