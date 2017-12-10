@@ -4,9 +4,15 @@ var url_base = "https://himeldas.pythonanywhere.com"
 
 function onDeviceReady() {
 	$('.main-header').load('header.html');
-	$('.main-footer').load('footer.html', function(){
-		doBind();
+	$('.main-footer').load('footer.html', function(){  //asynchronous function bind after load!
+		$( "#get_messages" ).click(function() {
+			getMessages();
+		});
+		$( "#get_info" ).click(function() {
+			getInformation();
+		});
 	});
+	doBind();
 	doAbout();
 	getKey();
 }
@@ -61,9 +67,6 @@ function doBind() {
 	$( "#qr_scan" ).click(function() {
 		doQrScan();
 	});	
-	$( "#get_messages" ).click(function() {
-		getMessages();
-	});
 }
 
 function getCameraImage(stipulation) {
@@ -150,6 +153,20 @@ function getStipulations(){
 	});
 }
 
+
+function getInformation(){
+	var url = url_base + '/init/api/get_information.json/' + window.localStorage.getItem("key");
+	$.getJSON(  
+	  url,
+	  function(data) {
+		doInfo(data);
+	  }
+	).fail(function( jqXHR, textStatus, errorThrown) {
+		toast( "Error 7: Failed to connect to CITTrack server!" );
+	});
+}
+
+
 function doList(data) {
 	var tpl = _.template(
 		"<% _.each( stipulations, function(v, k) { %>"+
@@ -171,10 +188,10 @@ function doList(data) {
 }	
 
 function doAbout() {
-	var tpl2 = _.template(
+	var tpl = _.template(
 		"<% _.each( stipulations, function(v, k) { %>"+
 			  '<div id="about<%- k %>" data-role="page">'+
-				'<header data-role="header" data-position="fixed" data-id="appHeader">'+
+				'<header data-role="header" data-position="fixed">'+
 				  '<h1><%- v["label"] %></h1>'+
 				  '<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>'+
 				'</header>'+
@@ -184,7 +201,7 @@ function doAbout() {
 			  '</div>'+
 		'<% }); %>'
 	);
-	$("body").append(tpl2({stipulations: stipulations}));
+	$("body").append(tpl({stipulations: stipulations}));
 }
 
 function doMessages(data) {
@@ -200,4 +217,17 @@ function doMessages(data) {
 		'<% }); %>'
 	);
 	$("#messages").html(tpl({data: data})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply 
+}
+
+function doInfo(data) {
+	var tpl = _.template(
+		'<p>Contract ID: <%= info["contract_id"]%></p>'+
+		'<p>Vehicle: <%= info["vehicle"]%></p>'+
+		'<p>Dealership: <%= info["dealership"]%></p>'+
+		'<p>Dealership address: <%= info["dealership_add"]%></p>'+
+		'<p>Dealership Tel: <%= info["dealership_tel"]%></p>'+
+		'<p>Dealer: <%= info["dealer"]%></p>'+
+		'<p>Dealer Tel: <%= info["dealer_tel"]%></p>'
+	);
+	$("#information").html(tpl({info: data})).enhanceWithin();
 }
