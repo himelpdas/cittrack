@@ -185,11 +185,10 @@ function doMessages(data) {
 	var tpl = _.template(
 		"<% _.each( data, function(v, k) { %>"+
 			'<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">'+
-				'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%- v["date"] %>'+
+				'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%- v["person"] %> on <%- v["date"] %>'+
 				'</li>'+
 				'<li>'+
-					'<h2><%- v["person"] %></h2>'+
-					'<p><%- v["message"] %></p>'+
+					'<div style="white-space: normal;"><%- v["message"] %></div>'+ //white-space: normal; to stop truncate
 				'</li>'+
 			'</ul>'+
 		'<% }); %>'
