@@ -1,11 +1,10 @@
-$('.main-header').load('header.html');
-$('.main-footer').load('footer.html');
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var url_base = "https://himeldas.pythonanywhere.com"
 
 function onDeviceReady() {
+	$('.main-header').load('header.html');
+	$('.main-footer').load('footer.html');
 	doAbout();
 	doBind();
 	getKey();
