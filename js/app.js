@@ -194,9 +194,8 @@ function doAbout() {
 	var tpl = _.template(
 		"<% _.each( stipulations, function(v, k) { %>"+
 			  '<div id="about<%- k %>" data-role="page">'+
-				'<header data-role="header" data-position="fixed">'+
+				'<header data-role="header" data-position="fixed" data-add-back-btn="true">'+
 				  '<h1><%- v["label"] %></h1>'+
-				  '<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>'+
 				'</header>'+
 				'<div data-role="content">'+
 					'<%= v["description"]%>'+
