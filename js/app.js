@@ -85,6 +85,9 @@ function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 	var url = url_base + '/init/api/post_image.txt/' + key + "/" + stipulation;
 	var send = new FormData();
 	send.append('image', imageData);
+	
+	toast("Uploading image...");
+	
 	$.ajax({
 		url: url,
 		data: send,
@@ -93,7 +96,7 @@ function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 		processData: false,
 		type: 'POST',
 		success: function(data){
-			alert("Posted image ID " + data);
+			alert("Image upload success!");
 		},
 		fail: function( jqXHR, textStatus, errorThrown) {
 			alert( "Error 1: Failed to submit image to CITTrack!" );
