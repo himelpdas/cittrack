@@ -1,3 +1,6 @@
+$('.main-header').load('header.html');
+$('.main-footer').load('footer.html');
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var url_base = "https://himeldas.pythonanywhere.com"
@@ -40,7 +43,7 @@ function testKey(key) {
 		  if (data != "success") {
 			  $('#loading_header').hide();
 			  $('#scan_barcode_header').show();
-			  toast("Error: Invalid Key! Please contact your dealer for a new barcode!");
+			  toast("Error 1: Invalid Key! Please contact your dealer for a new barcode!");
 			  window.localStorage.removeItem("key");
 			} else {
 			  $('#loading_header').show();
@@ -50,7 +53,7 @@ function testKey(key) {
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		toast( "Error 3: Failed to connect to CITTrack server!" );
+		toast( "Error 2: Failed to connect to CITTrack server!" );
 	});
 }
 
@@ -76,7 +79,7 @@ function getCameraImage(stipulation) {
 }
 
 function onCameraError(message) {
-	toast('Error: ' + message);
+	toast('Error 3: ' + message);
 }
 
 function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
@@ -99,7 +102,7 @@ function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 			toast("Image upload success!");
 		},
 		fail: function( jqXHR, textStatus, errorThrown) {
-			toast( "Error 1: Failed to submit image to CITTrack!" );
+			toast( "Error 4: Failed to submit image to CITTrack!" );
 		}
 	});
 }
@@ -115,7 +118,7 @@ function doQrScan(){
 				// "Cancelled: " + result.cancelled);
 	  	},
 	  	function (error) {
-			toast("Scanning failed: " + error);
+			toast("Error 5: " + error);
 	  	},
 		{
 			'prompt' : "Scan the CITTrack Barcode now.",
@@ -131,7 +134,7 @@ function getMessages(){
 		doMessages(data);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		toast( "Error 4: Failed to connect to CITTrack server!" );
+		toast( "Error 6: Failed to connect to CITTrack server!" );
 	});
 }
 
@@ -143,7 +146,7 @@ function getStipulations(){
 		doList(data);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
-		toast( "Error 2: Failed to connect to CITTrack server!" );
+		toast( "Error 7: Failed to connect to CITTrack server!" );
 	});
 }
 
