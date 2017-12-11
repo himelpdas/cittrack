@@ -13,14 +13,14 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 function onDeviceReady() {
 	$('.main-header').load('header.html');
 	$('.main-footer').load('footer.html', function(){  //asynchronous function bind after load!
-		$( "#get_messages" ).unbind().click(function() {
+		$( "#get_messages" ).unbind().tap(function() {
 			getMessages();
 		});
-		$( "#get_info" ).unbind().click(function() {
+		$( "#get_info" ).unbind().tap(function() {
 			getInformation();
 		});		
-		$( "#get_stipulations" ).unbind().click(function() {
-			getStipulations();
+		$( "#get_stipulations" ).unbind().tap(function() {
+			getStipulations();  //fires multiple times upon inspect https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
 		});
 	});
 	doBind();
