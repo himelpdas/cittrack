@@ -12,17 +12,7 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 
 function onDeviceReady() {
 	$('.main-header').load('header.html');
-	$('.main-footer').load('footer.html', function(){  //asynchronous function bind after load!
-		$( "#get_messages" ).unbind().tap(function() {
-			getMessages();
-		});
-		$( "#get_info" ).unbind().tap(function() {
-			getInformation();
-		});		
-		$( "#get_stipulations" ).unbind().tap(function() {
-			getStipulations();  //fires multiple times upon inspect https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
-		});
-	});
+	$('.main-footer').load('footer.html');
 	doBind();
 	doAbout();
 	getKey();
@@ -79,6 +69,15 @@ function doBind() {
 	$( "#qr_scan" ).click(function() {
 		doQrScan();
 	});	
+	$(document).on( "tap", "#get_messages", function() {
+		getMessages();
+	});
+	$(document).on( "tap", "#get_info", function() {
+		getInformation();
+	});		
+	$(document).on( "tap", "#get_stipulations", function() {
+		getStipulations();  //fires multiple times upon inspect https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
+	});
 }
 
 function getCameraImage(stipulation) {
