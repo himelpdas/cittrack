@@ -67,7 +67,7 @@ function testKey(key) {
 			  $('#scan_barcode_header').hide();
 			  getStipulations();
 			  login = 1;
-			  //$( "body" ).pagecontainer( "change", $("#homeScreen") , {reverse: false, changeHash: false});  //https://stackoverflow.com/questions/13252524/remove-page-from-jquery-mobile-history-such-that-back-button-bypasses-it
+			  $( "body" ).pagecontainer( "change", $("#homeScreen") , {reverse: false, changeHash: false});  //https://stackoverflow.com/questions/13252524/remove-page-from-jquery-mobile-history-such-that-back-button-bypasses-it
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
