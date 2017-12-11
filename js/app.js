@@ -13,13 +13,13 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 function onDeviceReady() {
 	$('.main-header').load('header.html');
 	$('.main-footer').load('footer.html', function(){  //asynchronous function bind after load!
-		$( "#get_messages" ).click(function() {
+		$( "#get_messages" ).unbind().click(function() {
 			getMessages();
 		});
-		$( "#get_info" ).click(function() {
+		$( "#get_info" ).unbind().click(function() {
 			getInformation();
 		});		
-		$( "#get_stipulations" ).click(function() {
+		$( "#get_stipulations" ).unbind().click(function() {
 			getStipulations();
 		});
 	});
