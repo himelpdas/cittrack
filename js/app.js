@@ -5,7 +5,7 @@ var url_base = "https://himeldas.pythonanywhere.com"
 document.addEventListener("deviceready", onDeviceReady, false);
 
 $(document).on('pagebeforeshow', '#sign_in', function() {
-    if(login === 1) {//login condition
+    if(login === 1) {//login condition https://stackoverflow.com/questions/22450146/hide-and-remove-jquery-mobile-login-page-after-login
         $.mobile.changePage("#homeScreen");
     }
 });
