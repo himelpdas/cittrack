@@ -1,6 +1,14 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+var login = 0;
 
 var url_base = "https://himeldas.pythonanywhere.com"
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+$(document).on('pagebeforeshow', '#login-page', function() {
+    if(login === 1) {//login condition
+        $.mobile.changePage("#homeScreen");
+    }
+});
 
 function onDeviceReady() {
 	$('.main-header').load('header.html');
@@ -20,7 +28,7 @@ function onDeviceReady() {
 	getKey();
 }
 
-function loginCheck(user, pass) {
+/* function loginCheck(user, pass) {
 	
 	var url = 'http://' + user + ':' + pass + '@192.168.0.14:8889/init/api/login_test.txt'; 
 	$.get(
@@ -33,7 +41,7 @@ function loginCheck(user, pass) {
 		  }
 	  }
 	);
-}
+} */
 
 function getKey() {
 	var key = window.localStorage.getItem("key");
@@ -58,7 +66,8 @@ function testKey(key) {
 			  $('#loading_header').show();
 			  $('#scan_barcode_header').hide();
 			  getStipulations();
-			  $( "body" ).pagecontainer( "change", $("#homeScreen") , {reverse: false, changeHash: false});  //https://stackoverflow.com/questions/13252524/remove-page-from-jquery-mobile-history-such-that-back-button-bypasses-it
+			  login = 1;
+			  //$( "body" ).pagecontainer( "change", $("#homeScreen") , {reverse: false, changeHash: false});  //https://stackoverflow.com/questions/13252524/remove-page-from-jquery-mobile-history-such-that-back-button-bypasses-it
 		  }
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
