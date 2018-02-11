@@ -82,6 +82,8 @@ function doBind() {
 	});
 	$(document).on( "submit", "#submit_message", function(evt) {
 		sendMessage(evt);
+		
+		return false;
 	});
 }
 
@@ -111,8 +113,7 @@ function sendMessage(evt) {
 			toast( "Error 9: Failed to submit message to CITTrack!" );
 		}
 	});
-	
-	return false;
+
 }
 
 function getCameraImage(stipulation) {
