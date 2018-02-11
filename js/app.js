@@ -89,6 +89,8 @@ function sendMessage(evt) {
 	
 	evt.preventDefault();
 	
+	var key = window.localStorage.getItem("key");
+	
 	var url = url_base + '/init/api/post_message.txt/' + key;
 	
 	var send = new FormData();
@@ -109,6 +111,8 @@ function sendMessage(evt) {
 			toast( "Error 9: Failed to submit message to CITTrack!" );
 		}
 	});
+	
+	return false;
 }
 
 function getCameraImage(stipulation) {
