@@ -89,7 +89,7 @@ function sendMessage(evt) {
 	
 	evt.preventDefault();
 	
-	var url = url_base + '/init/api/post_message.txt/' + key + "/" + stipulation;
+	var url = url_base + '/init/api/post_message.txt/' + key;
 	
 	var send = new FormData();
 	send.append('image', imageData);
