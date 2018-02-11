@@ -106,7 +106,7 @@ function sendMessage(evt) {
 			getMessages();
 		},
 		fail: function( jqXHR, textStatus, errorThrown) {
-			toast( "Error 4: Failed to submit image to CITTrack!" );
+			toast( "Error 9: Failed to submit message to CITTrack!" );
 		}
 	});
 }
