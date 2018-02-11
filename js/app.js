@@ -4,7 +4,7 @@ var url_base = "https://himeldas.pythonanywhere.com"
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-$(document).on('pagebeforechange', '#sign_in', function() {
+$(document).on('pagebeforeshow', '#sign_in', function() {
     if(login === 1) {//login condition https://stackoverflow.com/questions/22450146/hide-and-remove-jquery-mobile-login-page-after-login
         $.mobile.changePage("#homeScreen");
     }
@@ -79,6 +79,35 @@ function doBind() {
 	});		
 	$(document).on( "tap", "#get_stipulations", function() {
 		getStipulations();  //fires multiple times upon inspect https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
+	});
+	$(document).on( "submit", "#submit_message", function(evt) {
+		sendMessage(evt);
+	});
+}
+
+function sendMessage(evt) {
+	
+	evt.preventDefault();
+	
+	var url = url_base + '/init/api/post_message.txt/' + key + "/" + stipulation;
+	
+	var send = new FormData();
+	send.append('image', imageData);
+	
+	$.ajax({
+		url: url,
+		data: send,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+		success: function(data){
+			toast("Message sent!");
+			getMessages();
+		},
+		fail: function( jqXHR, textStatus, errorThrown) {
+			toast( "Error 4: Failed to submit image to CITTrack!" );
+		}
 	});
 }
 
