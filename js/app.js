@@ -94,7 +94,7 @@ function sendMessage(evt) {
 	var url = url_base + '/init/api/post_message.txt/' + key;
 	
 	var send = new FormData();
-	send.append('image', imageData);
+	send.append('message', $("#submit_message_input").val());
 	
 	$.ajax({
 		url: url,
