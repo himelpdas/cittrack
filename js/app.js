@@ -4,7 +4,7 @@ var url_base = "https://himeldas.pythonanywhere.com"
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-$(document).on('pagebeforeshow', '#sign_in', function() {
+$(document).on('pagebeforechange', '#sign_in', function() {
     if(login === 1) {//login condition https://stackoverflow.com/questions/22450146/hide-and-remove-jquery-mobile-login-page-after-login
         $.mobile.changePage("#homeScreen");
     }
@@ -66,10 +66,12 @@ function testKey(key) {
 }
 
 function doBind() {
-	$( "#qr_scan" ).click(function() {
+	//USE DOCUMENT ON CLICK FROM NOW ON, .CLICK CAUSES UNEXPECTED BEHAVIOR
+	//DEVICE READY DOES NOT MEAN DOCUMENT IS READY
+	$(document).on("tap", "#qr_scan", function() {
 		doQrScan();
 	});	
-	$(document).on( "tap", "#get_messages", function() {
+	$(document).on( "tap", "#get_messages", function() {  
 		getMessages();
 	});
 	$(document).on( "tap", "#get_info", function() {
@@ -192,8 +194,7 @@ function doList(data) {
 		'<% }); %>'
 	);
 	$("#stipulations").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
-	$( ".captureButton" ).click(function() {
-  		//doScan();
+	$(document).on( "tap", ".captureButton", function() {  
   		getCameraImage($(this).data("stipulation"));
 	});
 }	
