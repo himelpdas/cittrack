@@ -1,6 +1,6 @@
 var login = 0;
 
-var url_base = "https://himeldas.pythonanywhere.com"
+var url_base = "https://cittrack.com"
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -113,7 +113,7 @@ function sendMessage(evt) {
 			toast( "Error 9: Failed to submit message to CITTrack!" );
 		}
 	});
-
+	
 }
 
 function getCameraImage(stipulation) {
