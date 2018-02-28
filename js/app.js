@@ -20,7 +20,7 @@ function onDeviceReady() {
 
 /* function loginCheck(user, pass) {
 	
-	var url = 'http://' + user + ':' + pass + '@192.168.0.14:8889/init/api/login_test.txt'; 
+	var url = 'http://' + user + ':' + pass + '@192.168.0.14:8889/cittrack/api/login_test.txt'; 
 	$.get(
 	  url,
 	  function(data) {
@@ -43,7 +43,7 @@ function getKey() {
 }
 
 function testKey(key) {
-	var url = url_base + '/init/api/key_test.txt/' + key;
+	var url = url_base + '/cittrack/api/key_test.txt/' + key;
 	$.get(
 	  url,
 	  function(data) {
@@ -93,7 +93,7 @@ function sendMessage(evt) {
 	
 	var key = window.localStorage.getItem("key");
 	
-	var url = url_base + '/init/api/post_message.txt/' + key;
+	var url = url_base + '/cittrack/api/post_message.txt/' + key;
 	
 	var send = new FormData();
 	send.append('message', $("#submit_message_input").val());
@@ -135,7 +135,7 @@ function onCameraError(message) {
 function onCameraSuccess(imageData) {  // https://goo.gl/L1T18v
 	var stipulation = window.sessionStorage.getItem("temp");
 	var key = window.localStorage.getItem("key");
-	var url = url_base + '/init/api/post_image.txt/' + key + "/" + stipulation;
+	var url = url_base + '/cittrack/api/post_image.txt/' + key + "/" + stipulation;
 	var send = new FormData();
 	send.append('image', imageData);
 	
@@ -178,7 +178,7 @@ function doQrScan(){
 }
 
 function getMessages(){
-	var url = url_base + '/init/api/get_messages.json/' + window.localStorage.getItem("key");
+	var url = url_base + '/cittrack/api/get_messages.json/' + window.localStorage.getItem("key");
 	$.getJSON(  
 	  url,
 	  function(data) {
@@ -190,7 +190,7 @@ function getMessages(){
 }
 
 function getStipulations(){
-	var url = url_base + '/init/api/get_stipulations.json/' + window.localStorage.getItem("key");
+	var url = url_base + '/cittrack/api/get_stipulations.json/' + window.localStorage.getItem("key");
 	$.getJSON(  
 	  url,
 	  function(data) {
@@ -203,7 +203,7 @@ function getStipulations(){
 
 
 function getInformation(){
-	var url = url_base + '/init/api/get_information.json/' + window.localStorage.getItem("key");
+	var url = url_base + '/cittrack/api/get_information.json/' + window.localStorage.getItem("key");
 	$.getJSON(  
 	  url,
 	  function(data) {
