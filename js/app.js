@@ -1,6 +1,6 @@
 var login = 0;
 
-var url_base = "https://cittrack.com"
+var url_base = "http://127.0.0.1:9003"
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
