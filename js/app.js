@@ -1,6 +1,6 @@
 var login = 0;
 
-var url_base = "http://127.0.0.1:9003"
+var url_base = "http://192.168.0.34:9003"
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -178,7 +178,7 @@ function doQrScan(){
 }
 
 function getMessages(){
-	var url = url_base + '/cittrack/api/get_messages.json/' + window.localStorage.getItem("key");
+	var url = url_base + '/cittrack/api/messages.json/' + window.localStorage.getItem("key");
 	$.getJSON(  
 	  url,
 	  function(data) {
