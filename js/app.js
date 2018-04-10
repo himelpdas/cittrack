@@ -11,6 +11,7 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 });
 
 function onDeviceReady() {
+	$.ajaxSetup({ cache: false });
 	$('.main-header').load('header.html');
 	$('.main-footer').load('footer.html');
 	doBind();
@@ -228,7 +229,7 @@ function doList(data) {
 		'<% }); %>'
 	);
 	$("#stipulations").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
-	$(document).one( "tap", ".captureButton", function() {  
+	$(document).off('tap', ".captureButton").on( "tap", ".captureButton", function() {  
   		getCameraImage($(this).data("stipulation"));
 	});
 }	
