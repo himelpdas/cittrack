@@ -80,16 +80,16 @@ function doBind() {
 	$(document).on( "tap", "#get_stipulations", function() {
 		getStipulations();  //fires multiple times upon inspect https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
 	});
-	$(document).on( "submit", "#submit_message", function(evt) {
+/* 	$(document).on( "submit", "#submit_message", function(evt) {
 		sendMessage(evt);
 		
 		return false;
-	});
+	}); */
 }
 
-function sendMessage(evt) {
+function sendMessage() {
 	
-	evt.preventDefault();
+	//evt.preventDefault();
 	
 	var key = window.localStorage.getItem("key");
 	
