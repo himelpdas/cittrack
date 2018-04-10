@@ -183,7 +183,7 @@ function getMessages(){
 	$.getJSON(  
 	  url,
 	  function(data) {
-		doMessages(data);
+		doMessages(data["messages"]);
 	  }
 	).fail(function( jqXHR, textStatus, errorThrown) {
 		toast( "Error 6: Failed to connect to CITTrack server!" );
@@ -252,7 +252,7 @@ function doAbout() {
 
 function doMessages(data) {
 	var tpl = _.template(
-		"<% _.each( data, function(v, k) { %>"+
+		"<% _.each( data, function(v, i) { %>"+
 			'<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">'+
 				'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-li-has-count ui-first-child"><%- v["person"] %> on <%- v["date"] %>'+
 				'</li>'+
