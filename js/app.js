@@ -93,7 +93,7 @@ function sendMessage(evt) {
 	
 	var key = window.localStorage.getItem("key");
 	
-	var url = url_base + '/cittrack/api/post_message.txt/' + key;
+	var url = url_base + '/cittrack/api/messages.txt/' + key;
 	
 	var send = new FormData();
 	send.append('message', $("#submit_message_input").val());
