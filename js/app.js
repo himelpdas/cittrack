@@ -68,16 +68,16 @@ function testKey(key) {
 function doBind() {
 	//USE DOCUMENT ON CLICK FROM NOW ON, .CLICK CAUSES UNEXPECTED BEHAVIOR
 	//DEVICE READY DOES NOT MEAN DOCUMENT IS READY
-	$(document).on("tap", "#qr_scan", function() {
+	$(document).off("tap", "#qr_scan").on("tap", "#qr_scan", function() {
 		doQrScan();
 	});	
-	$(document).on( "tap", "#get_messages", function() {  
+	$(document).off( "tap", "#get_messages").on( "tap", "#get_messages", function() {  
 		getMessages();
 	});
-	$(document).on( "tap", "#get_info", function() {
+	$(document).off( "tap", "#get_info").on( "tap", "#get_info", function() {
 		getInformation();
 	});		
-	$(document).on( "tap", "#get_stipulations", function() {
+	$(document).off( "tap", "#get_stipulations").on( "tap", "#get_stipulations", function() {
 		getStipulations();  //fires multiple times upon inspect https://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
 	});
 /* 	$(document).on( "submit", "#submit_message", function(evt) {
