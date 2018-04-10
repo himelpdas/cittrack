@@ -228,7 +228,7 @@ function doList(data) {
 		'<% }); %>'
 	);
 	$("#stipulations").html(tpl({stipulations: data, icons: icons})).enhanceWithin(); //getJSON otherwise JQM styling fails to apply https://goo.gl/NBUvT7
-	$(document).on( "tap", ".captureButton", function() {  
+	$(document).on( "click", ".captureButton", function() {  
   		getCameraImage($(this).data("stipulation"));
 	});
 }	
