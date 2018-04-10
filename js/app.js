@@ -114,6 +114,7 @@ function sendMessage() {
 		}
 	});
 	
+	return false;
 }
 
 function getCameraImage(stipulation) {
