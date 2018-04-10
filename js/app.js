@@ -11,7 +11,6 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 });
 
 function onDeviceReady() {
-	$.ajaxSetup({ cache: false });
 	$('.main-header').load('header.html');
 	$('.main-footer').load('footer.html');
 	doBind();
