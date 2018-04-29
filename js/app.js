@@ -16,7 +16,7 @@ function initPushwoosh() {
   // Initialize Pushwoosh. This will trigger all pending push notifications on start.
   pushwoosh.onDeviceReady({
     appid: "8C044-8B0EE",
-    projectid: "cittrack-202615",
+    projectid: "139638327889",
     serviceName: "com.citrack"
   });
   
