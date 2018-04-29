@@ -54,12 +54,12 @@
       </platform>
       
        <platform name="android">
-        <icon src="res/icon/android/mipmap-ldpi-icon" qualifier="ldpi"/>
-        <icon src="res/icon/android/mipmap-mdpi-icon" qualifier="mdpi"/>
-        <icon src="res/icon/android/mipmap-hdpi-icon" qualifier="hdpi"/>
-        <icon src="res/icon/android/mipmap-xhdpi-icon" qualifier="xhdpi"/>
-        <icon src="res/icon/android/mipmap-xxhdpi-icon" qualifier="xxhdpi"/>
-        <icon src="res/icon/android/mipmap-xxxhdpi-icon" qualifier="xxxhdpi"/>
+        <icon src="res/icon/android/mipmap-ldpi-icon" density="ldpi"/>
+        <icon src="res/icon/android/mipmap-mdpi-icon" density="mdpi"/>
+        <icon src="res/icon/android/mipmap-hdpi-icon" density="hdpi"/>
+        <icon src="res/icon/android/mipmap-xhdpi-icon" density="xhdpi"/>
+        <icon src="res/icon/android/mipmap-xxhdpi-icon" density="xxhdpi"/>
+        <icon src="res/icon/android/mipmap-xxxhdpi-icon" density="xxxhdpi"/>
       </platform>
       
        <platform name="ios">
@@ -73,12 +73,12 @@
       </platform>
       
       <platform name="android">
-        <splash src="res/screen/android/mipmap-port-ldpi-screen" qualifier="ldpi"/>
-        <splash src="res/screen/android/mipmap-port-mdpi-screen" qualifier="mdpi"/>
-        <splash src="res/screen/android/mipmap-port-hdpi-screen" qualifier="hdpi"/>
-        <splash src="res/screen/android/mipmap-port-xhdpi-screen" qualifier="xhdpi"/>
-        <splash src="res/screen/android/mipmap-port-xxhdpi-screen" qualifier="xxhdpi"/>
-        <splash src="res/screen/android/mipmap-port-xxxhdpi-screen" qualifier="xxxhdpi"/>
+        <splash src="res/screen/android/mipmap-port-ldpi-screen" density="ldpi"/>
+        <splash src="res/screen/android/mipmap-port-mdpi-screen" density="mdpi"/>
+        <splash src="res/screen/android/mipmap-port-hdpi-screen" density="hdpi"/>
+        <splash src="res/screen/android/mipmap-port-xhdpi-screen" density="xhdpi"/>
+        <splash src="res/screen/android/mipmap-port-xxhdpi-screen" density="xxhdpi"/>
+        <splash src="res/screen/android/mipmap-port-xxxhdpi-screen" density="xxxhdpi"/>
       </platform>
       
       <preference name="permissions" value="none"/>
@@ -92,7 +92,7 @@
       <plugin name="cordova-plugin-splashscreen" spec="~3.2.1" source="npm"/>
       <plugin name="cordova-plugin-statusbar" spec="~2.1.2" source="npm"/>
       <plugin name="cordova-plugin-whitelist" spec="~1.2.1" source="npm"/>
-      <plugin name="cordova-plugin-file" source="npm"/>
+      <plugin name="cordova-plugin-file" spec="~4.3.3" source="npm"/>
 	  <plugin name="phonegap-plugin-barcodescanner" spec="~6.0.8" source="npm"/>
       <gap:plugin name="pushwoosh-pgb-plugin" spec="~7.2.5" source="npm" />
 
