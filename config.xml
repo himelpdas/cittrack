@@ -32,6 +32,7 @@
     
     <preference name="android-minSdkVersion" value="18" />
     <preference name="android-installLocation" value="auto" />
+	<preference name="android-build-tool" value="gradle" />
     
      <platform name="ios">
         <icon src="res/icon/ios/icon.png" width="57" height="57"/>
@@ -93,9 +94,11 @@
       <plugin name="cordova-plugin-whitelist" spec="~1.2.1" source="npm"/>
       <plugin name="cordova-plugin-file" spec="~4.3.0" source="npm"/>
 	  <plugin name="phonegap-plugin-barcodescanner" spec="~6.0.8" source="npm"/>
-      
+      <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
+
       <access origin="*" subdomains="true"/>
-      
+      <access origin="*.pushwoosh.com"/>
+	  
       <allow-intent href="http://*/*"/>
       <allow-intent href="https://*/*"/>
       <allow-intent href="tel:*"/>

@@ -3,6 +3,26 @@ var login = 0;
 //var url_base = "http://192.168.0.34:9003/cittrack"
 var url_base = "https://cittrack.com"
 
+function initPushwoosh() {
+  var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+
+  // Should be called before pushwoosh.onDeviceReady
+  document.addEventListener('push-notification', function(event) {
+    var notification = event.notification;
+    // handle push open here
+	alert(notification);
+  });
+  
+  // Initialize Pushwoosh. This will trigger all pending push notifications on start.
+  pushwoosh.onDeviceReady({
+    appid: "8C044-8B0EE",
+    projectid: "cittrack-202615",
+    serviceName: "com.citrack"
+  });
+}
+
+
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 $(document).on('pagebeforeshow', '#sign_in', function() {
@@ -12,6 +32,18 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 });
 
 function onDeviceReady() {
+	initPushwoosh();
+	pushwoosh.registerDevice(
+		function(status) {
+			var pushToken = status.pushToken;
+			// handle successful registration here
+			alert(pushToken);
+		},
+		function(status) {
+			// handle registration error here
+			alert("Failed to register to push notification!");
+		}
+	);
 	$('.main-header').load('header.html');
 	$('.main-footer').load('footer.html');
 	doBind();
