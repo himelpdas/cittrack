@@ -19,6 +19,19 @@ function initPushwoosh() {
     projectid: "cittrack-202615",
     serviceName: "com.citrack"
   });
+  
+	pushwoosh.registerDevice(
+		function(status) {
+			var pushToken = status.pushToken;
+			// handle successful registration here
+			alert(pushToken);
+		},
+		function(status) {
+			// handle registration error here
+			alert("Failed to register to push notification!");
+		}
+	);
+  
 }
 
 
@@ -33,17 +46,6 @@ $(document).on('pagebeforeshow', '#sign_in', function() {
 
 function onDeviceReady() {
 	initPushwoosh();
-	pushwoosh.registerDevice(
-		function(status) {
-			var pushToken = status.pushToken;
-			// handle successful registration here
-			alert(pushToken);
-		},
-		function(status) {
-			// handle registration error here
-			alert("Failed to register to push notification!");
-		}
-	);
 	$('.main-header').load('header.html');
 	$('.main-footer').load('footer.html');
 	doBind();
