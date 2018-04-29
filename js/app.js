@@ -9,6 +9,7 @@ function initPushwoosh() {
   // Should be called before pushwoosh.onDeviceReady
   document.addEventListener('push-notification', function(event) {
     var notification = event.notification;
+	getMessages();
     // handle push open here
 	alert(notification);
   });
@@ -23,12 +24,12 @@ function initPushwoosh() {
 	pushwoosh.registerDevice(
 		function(status) {
 			var pushToken = status.pushToken;
-			// handle successful registration here
+			//handle successful registration here
 			alert(pushToken);
 		},
 		function(status) {
 			// handle registration error here
-			alert("Failed to register to push notification!");
+			toast(status);
 		}
 	);
   
