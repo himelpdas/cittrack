@@ -54,12 +54,12 @@
       </platform>
       
        <platform name="android">
-        <icon src="res/icon/android/drawable-ldpi-icon" qualifier="ldpi"/>
-        <icon src="res/icon/android/drawable-mdpi-icon" qualifier="mdpi"/>
-        <icon src="res/icon/android/drawable-hdpi-icon" qualifier="hdpi"/>
-        <icon src="res/icon/android/drawable-xhdpi-icon" qualifier="xhdpi"/>
-        <icon src="res/icon/android/drawable-xxhdpi-icon" qualifier="xxhdpi"/>
-        <icon src="res/icon/android/drawable-xxxhdpi-icon" qualifier="xxxhdpi"/>
+        <icon src="res/icon/android/drawable-ldpi-icon.png" qualifier="ldpi"/>
+        <icon src="res/icon/android/drawable-mdpi-icon.png" qualifier="mdpi"/>
+        <icon src="res/icon/android/drawable-hdpi-icon.png" qualifier="hdpi"/>
+        <icon src="res/icon/android/drawable-xhdpi-icon.png" qualifier="xhdpi"/>
+        <icon src="res/icon/android/drawable-xxhdpi-icon.png" qualifier="xxhdpi"/>
+        <icon src="res/icon/android/drawable-xxxhdpi-icon.png" qualifier="xxxhdpi"/>
       </platform>
       
        <platform name="ios">
@@ -73,12 +73,12 @@
       </platform>
       
       <platform name="android">
-        <splash src="res/screen/android/drawable-port-ldpi-screen" qualifier="ldpi"/>
-        <splash src="res/screen/android/drawable-port-mdpi-screen" qualifier="mdpi"/>
-        <splash src="res/screen/android/drawable-port-hdpi-screen" qualifier="hdpi"/>
-        <splash src="res/screen/android/drawable-port-xhdpi-screen" qualifier="xhdpi"/>
-        <splash src="res/screen/android/drawable-port-xxhdpi-screen" qualifier="xxhdpi"/>
-        <splash src="res/screen/android/drawable-port-xxxhdpi-screen" qualifier="xxxhdpi"/>
+        <splash src="res/screen/android/drawable-port-ldpi-screen.png" qualifier="ldpi"/>
+        <splash src="res/screen/android/drawable-port-mdpi-screen.png" qualifier="mdpi"/>
+        <splash src="res/screen/android/drawable-port-hdpi-screen.png" qualifier="hdpi"/>
+        <splash src="res/screen/android/drawable-port-xhdpi-screen.png" qualifier="xhdpi"/>
+        <splash src="res/screen/android/drawable-port-xxhdpi-screen.png" qualifier="xxhdpi"/>
+        <splash src="res/screen/android/drawable-port-xxxhdpi-screen.png" qualifier="xxxhdpi"/>
       </platform>
       
       <preference name="permissions" value="none"/>
