@@ -94,7 +94,7 @@
       <plugin name="cordova-plugin-whitelist" spec="~1.2.1" source="npm"/>
       <plugin name="cordova-plugin-file" spec="~4.3.0" source="npm"/>
 	  <plugin name="phonegap-plugin-barcodescanner" spec="~6.0.8" source="npm"/>
-      <gap:plugin name="pushwoosh-pgb-plugin" spec="~7.3.0" source="npm" />
+      <gap:plugin name="pushwoosh-pgb-plugin" spec="~7.2.5" source="npm" />
 
       <access origin="*" subdomains="true"/>
       <access origin="*.pushwoosh.com"/>
