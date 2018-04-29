@@ -30,7 +30,7 @@
     <preference name="ios-statusbarstyle" value="default"/>
     <preference name="StatusBarStyle" value="default" />
     
-    <preference name="android-minSdkVersion" value="18" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="android-installLocation" value="auto" />
 	<preference name="android-build-tool" value="gradle" />
     
